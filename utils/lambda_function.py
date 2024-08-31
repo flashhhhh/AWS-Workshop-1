@@ -9,13 +9,13 @@ s3 = boto3.client('s3')
 # Lambda handler function
 def lambda_handler(event, context):
     # RDS connection details
-    rds_host = 'de-database.cz02aya0ko32.us-east-1.rds.amazonaws.com'
+    rds_host = 'de-db.cjxjzjzjzjzj.us-east-1.rds.amazonaws.com'
     rds_username = 'admin'
-    rds_password = '12345678'
+    rds_password = 'your_password'
     rds_db_name = 'de_db'
     
     # S3 bucket details
-    s3_bucket = 'data-project-flash'
+    s3_bucket = 'your_bucket_name'
 
     # Connect to RDS MySQL
     connection = pymysql.connect(

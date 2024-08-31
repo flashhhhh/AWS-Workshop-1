@@ -8,9 +8,9 @@ app.use(express.static('public')); // To serve static files like JS
 
 // MySQL Connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '12345678',
+  host: 'de-db.cjxjzjzjzjzj.us-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: 'your_password',
   database: 'de_db'
 });
 
