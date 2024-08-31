@@ -87,16 +87,16 @@
                 href="//localhost:1313/vi/2-prerequiste/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-prerequiste/2.2-createiamrole/</loc>
+    <loc>//localhost:1313/vi/2-prerequiste/2.2-downloadutils/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.2-createiamrole/"
+                href="//localhost:1313/2-prerequiste/2.2-downloadutils/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.2-createiamrole/"
+                href="//localhost:1313/vi/2-prerequiste/2.2-downloadutils/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/3-deploy/3.2-deploy-in-ec2-instance/</loc>

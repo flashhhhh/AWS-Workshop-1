@@ -14,4 +14,4 @@ We will store the website data to the RDS instance and make a daily schedule dat
 
 ### Content
   - [Prepare VPC, EC2 and RDS](2.1-createec2/)
-  - [Create IAM Role](2.2-createiamrole/)
+  - [Download utils](2.2-downloadutils/)

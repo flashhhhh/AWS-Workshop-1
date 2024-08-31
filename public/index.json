@@ -42,13 +42,6 @@
 	"content": "For our EC2 instances to be able to send session logs to the S3 bucket, we will need to update the IAM Role assigned to the EC2 instance by adding a policy that allows access to S3.\nUpdate IAM Role Go to IAM service management console Click Roles. Click Create role. Click AWS Service, then choose Lambda service. After that click Next. In the Search box Enter S3, then tick AmazonS3FullAccess. Enter RDS, then tick AmazonRDSDataFullAccess. Then click Next. Now, enter the role name of this lambda function is rds-to-S3. We will see there are 2 policies in this IAM role, and click Create Role. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket to store data.\n"
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.2-createiamrole/",
-	"title": "Create IAM Role",
-	"tags": [],
-	"description": "",
-	"content": "Create IAM Role In this step, we will proceed to create IAM Role. In this IAM Role, the policy AmazonSSMManagedInstanceCore will be assigned, this is the policy that allows the EC2 server to communicate with the Session Manager.\nGo to IAM service administration interface In the left navigation bar, click Roles. Click Create role. Click AWS service and click EC2. Click Next: Permissions. In the Search box, enter AmazonSSMManagedInstanceCore and press Enter to search for this policy. Click the policy AmazonSSMManagedInstanceCore. Click Next: Tags. Click Next: Review. Name the Role SSM-Role in Role Name Click Create Role . Next, we will make the connection to the EC2 servers we created with Session Manager.\n"
-},
-{
 	"uri": "//localhost:1313/4-datastorage/4.2-creates3bucket/",
 	"title": "Create S3 Bucket",
 	"tags": [],
@@ -63,11 +56,18 @@
 	"content": "We\u0026rsquo;ve prepared our database. Now it\u0026rsquo;s time to deploy the website.\nCreate new folder with name source by typing mkdir source. Then cd source.\nDownload source code. Change to branch. In app.js file, change your DB_PASSWORD to the password you created.\nNow download the library.\nEnter sudo apt install npm to download npm library for Javascript. Init your nodejs environment with npm init -y. Download library for our website: npm i express mysql. Run node app.js. We can access to our website by access your_public_IP_linux_instance:3000 in your browser.\nNow access URL your_public_IP_linux_instance:3000/createcustomer\nTry to create some new customers to our website. Notice that phone numbers are unique.\nContinually access URL your_public_IP_linux_instance:3000/createtransaction Try to create some new transactions. Sender_id and receiver_id must be less or equal to the number of customers.\n"
 },
 {
+	"uri": "//localhost:1313/2-prerequiste/2.2-downloadutils/",
+	"title": "Download utils",
+	"tags": [],
+	"description": "",
+	"content": "Download utils In this step, we will download all files we need for this workshop.\nGo to EC2 service management console Navigate to Instances. Click on our created Linux instance. Click Connect to connect to this EC2 instance. "
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/",
 	"title": "Preparation ",
 	"tags": [],
 	"description": "",
-	"content": "\rYou need to create 1 Linux instance on the public subnet and 1 RDS MySQL instance on the private subnet to perform this lab.\nWe will store the website data to the RDS instance and make a daily schedule data pipeline to process and analyze our data.\nContent Prepare VPC, EC2 and RDS Create IAM Role "
+	"content": "\rYou need to create 1 Linux instance on the public subnet and 1 RDS MySQL instance on the private subnet to perform this lab.\nWe will store the website data to the RDS instance and make a daily schedule data pipeline to process and analyze our data.\nContent Prepare VPC, EC2 and RDS Download utils "
 },
 {
 	"uri": "//localhost:1313/4-datastorage/4.3-createlambdafunction/",

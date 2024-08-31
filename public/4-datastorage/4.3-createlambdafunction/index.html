@@ -12,21 +12,21 @@
     <title>Create Lambda function :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1725122222" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725122222" rel="stylesheet">
-    <link href="/css/hybrid.css?1725122222" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725122222" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725122222" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725122222" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725122222" rel="stylesheet">
-    <link href="/css/theme.css?1725122222" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725122222" rel="stylesheet">
+    <link href="/css/nucleus.css?1725125003" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725125003" rel="stylesheet">
+    <link href="/css/hybrid.css?1725125003" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725125003" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725125003" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725125003" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725125003" rel="stylesheet">
+    <link href="/css/theme.css?1725125003" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725125003" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725122222" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725125003" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725122222"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725125003"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725122222"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725122222"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725125003"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725125003"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725122222"></script>
+<script type="text/javascript" src="/js/search.js?1725125003"></script>
 
     
   </div>
@@ -291,13 +291,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-createiamrole/" title="Create IAM Role" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-downloadutils/" title="Download utils" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.2-createiamrole/">
-           <b> 2.2 </b> Create IAM Role
+      <a href="/2-prerequiste/2.2-downloadutils/">
+           <b> 2.2 </b> Download utils
           
             <i class="fas fa-check read-icon"></i>
           
@@ -817,6 +817,30 @@
 <li>Click on <strong>Create function</strong>.</li>
 </ul>
 <p><img alt="Lambda" src="/images/4.datastorage/11-choose_permission.png"></p>
+<ol start="4">
+<li>Now we want to upload Lambda layer for more library.</li>
+</ol>
+<ul>
+<li>In the Lambda function console, click <strong>Upload from</strong>.</li>
+<li>Then click <strong>.zip file</strong>.</li>
+</ul>
+<p><img alt="Lambda" src="/images/4.datastorage/12-upload_lambda_layers.png"></p>
+<ol start="5">
+<li>Upload <strong>pymysql.zip</strong> (the file in utils), then click <strong>Save</strong>.</li>
+</ol>
+<p><img alt="Lambda" src="/images/4.datastorage/13-upload_pymysql.png"></p>
+<ol start="6">
+<li>Create a new file inside <strong>rds-to-s3</strong> folder which has name <strong>lambda-function.py</strong>, then copy code from <strong>lambda-function.py</strong> from utils to this. And click <strong>Deploy</strong> to save.</li>
+</ol>
+<p><img alt="Lambda" src="/images/4.datastorage/14-code_lambda_function.png"></p>
+<ol start="7">
+<li>Click <strong>Test</strong> to create a new test event.</li>
+</ol>
+<ul>
+<li>Enter <strong>Event name</strong> <strong>de-test-event</strong>.</li>
+<li>Click <strong>Save</strong>.</li>
+</ul>
+<p><img alt="Lambda" src="/images/4.datastorage/15-create_test_event.png"></p>
 
 
 
@@ -1181,19 +1205,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725122222"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725122222"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725122222"></script>
-    <script src="/js/jquery.sticky.js?1725122222"></script>
-    <script src="/js/featherlight.min.js?1725122222"></script>
-    <script src="/js/highlight.pack.js?1725122222"></script>
+    <script src="/js/clipboard.min.js?1725125003"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725125003"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725125003"></script>
+    <script src="/js/jquery.sticky.js?1725125003"></script>
+    <script src="/js/featherlight.min.js?1725125003"></script>
+    <script src="/js/highlight.pack.js?1725125003"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725122222"></script>
-    <script src="/js/learn.js?1725122222"></script>
-    <script src="/js/hugo-learn.js?1725122222"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725125003"></script>
+    <script src="/js/learn.js?1725125003"></script>
+    <script src="/js/hugo-learn.js?1725125003"></script>
 
-    <link href="/mermaid/mermaid.css?1725122222" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725122222"></script>
+    <link href="/mermaid/mermaid.css?1725125003" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725125003"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

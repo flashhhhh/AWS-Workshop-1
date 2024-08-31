@@ -25,3 +25,23 @@ pre : " <b> 4.3 </b> "
   + Click on **Create function**.
 
 ![Lambda](/images/4.datastorage/11-choose_permission.png)
+
+4. Now we want to upload Lambda layer for more library.
+  + In the Lambda function console, click **Upload from**.
+  + Then click **.zip file**.
+
+![Lambda](/images/4.datastorage/12-upload_lambda_layers.png)
+
+5. Upload **pymysql.zip** (the file in utils), then click **Save**.
+
+![Lambda](/images/4.datastorage/13-upload_pymysql.png)
+
+6. Create a new file inside **rds-to-s3** folder which has name **lambda-function.py**, then copy code from **lambda-function.py** from utils to this. And click **Deploy** to save.
+
+![Lambda](/images/4.datastorage/14-code_lambda_function.png)
+
+7. Click **Test** to create a new test event.
+  + Enter **Event name** **de-test-event**.
+  + Click **Save**.
+
+![Lambda](/images/4.datastorage/15-create_test_event.png)
