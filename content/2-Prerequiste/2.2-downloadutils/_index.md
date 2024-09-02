@@ -20,3 +20,12 @@ In this step, we will download all files we need for this workshop.
 2. Click **Connect**.
 
 ![EC2](/images/2.prerequisite/26-connect.png)
+
+3. Now you can access EC2 instance through terminal.
+  + Enter **sudo apt update** to check for new updates.
+  + Type **git clone https://github.com/flashhhhh/AWS-Workshop-1.git**
+  + Enter **cd AWS-Workshop-1** to change directory to this repo.
+  + Now, type **git checkout utils**.
+  + This is the branch containing all of the files we need. You can type **ls** to check.
+
+![EC2](/images/2.prerequisite/27-download_utils.png)

@@ -16,4 +16,4 @@ We can manually create a snapshot of our RDS instance, then move it to S3 bucket
    - [Update IAM Role](./4.1-updateiamrole/)
    - [Create **S3 Bucket**](./4.2-creates3bucket/)
    - [Create **Lambda function**](./4.3-createlambdafunction)
-   - [Create **CloudWatch Event**](./4.4-createcloudwatchevent/)
+   - [Create **EventBridge Event**](./4.4-createeventbridge/)

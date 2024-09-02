@@ -6,7 +6,9 @@ chapter : false
 pre : " <b> 4.1 </b> "
 ---
 
-For our EC2 instances to be able to send session logs to the S3 bucket, we will need to update the IAM Role assigned to the EC2 instance by adding a policy that allows access to S3.
+For our Lambda function to be able to access data in RDS instance and send to S3 bucket, we will need to update the IAM Role assigned to lambda function by adding a policy that allows access to RDS and S3.
+
+Since our Lambda function is inside a private VPC, we will need attach a policy allowing our lambda function to access to EC2 instance too.
 
 #### Update IAM Role
 
@@ -23,11 +25,12 @@ For our EC2 instances to be able to send session logs to the S3 bucket, we will 
 3. In the Search box
   + Enter **S3**, then tick **AmazonS3FullAccess**.
   + Enter **RDS**, then tick **AmazonRDSDataFullAccess**.
+  + Enter **EC2**, then tick **AmazonEC2FullAccess**.
   + Then click **Next**.
 
-4. Now, enter the role name of this lambda function is **rds-to-S3**. We will see there are 2 policies in this IAM role, and click **Create Role**.
+4. Now, enter the role name of this lambda function is **rds-to-S3**. We will see there are 3 policies in this IAM role, and click **Create Role**.
 
-![IAM](/images/4.datastorage/03-create.png)
+![IAM](/images/4.datastorage/03-create_Lambda.png)
  
 {{%notice tip%}}
 In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy **AmazonS3FullAccess** for convenience.

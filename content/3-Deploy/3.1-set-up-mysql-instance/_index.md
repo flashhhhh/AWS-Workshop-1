@@ -27,15 +27,16 @@ Since the RDS instance is private, we must connect to EC2 instance to connect to
 
 ![Deploy](/images/3.deploy/03-mysql_signin.png)
 
-5. But we should login without using **sudo** command. To do that, we can set up a password for **root** user.
-  + Enter **ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_pass_word';**
-  + Enter **FLUSH PRIVILEGES;**
+5. But we are going to use the database inside RDS instance we created.
+  + Go to [RDS console](https://console.aws.amazon.com/rds/home)
+  + Navigate to **Databases** and select our **de-mysql-instance**.
+  + You can see your database endpoint here.
 
-![Deploy](/images/3.deploy/04-mysql_change_password.png)
+![Deploy](/images/3.deploy/04-see_rds_endpoint.png)
 
-Now you can exit then try to log in by new password created. The command to login is **mysql -u root -p** then type your password.
+Now you can exit then try to log in by new password created. The command to login is **mysql -h your_endpoint -u admin -p** then type your password.
 
-![Deploy](/images/3.deploy/05-mysql_relogin.png)
+![Deploy](/images/3.deploy/05-mysql_login.png)
 
 6. Now we can implement our database in this MySQL instance. This is our database diagram:
 
@@ -43,7 +44,7 @@ Now you can exit then try to log in by new password created. The command to logi
 
 It's easy to see the **Transactions** table stores the transaction list of the customers. Sender and receiver must be in the **Customers** table.
 
-7. Now type the SQL Queries.
+7. Now type the SQL queries. These are stored in the file having name **de_db.sql** we've downloaded.
 
 After that, we should receive the result like this.
 
