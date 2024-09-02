@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Create ETL job on AWS System Manager</title>
-    <link>//localhost:1313/5-dataprocess/5.3-createetljob/</link>
+    <link>http://localhost:39793/AWS-Workshop-1/5-dataprocess/5.3-createetljob/</link>
     <description>Recent content in Create ETL job on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="//localhost:1313/5-dataprocess/5.3-createetljob/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:39793/AWS-Workshop-1/5-dataprocess/5.3-createetljob/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

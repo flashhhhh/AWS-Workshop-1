@@ -1,188 +1,188 @@
 [
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.1-createvpc/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.1-createec2/2.1.1-createvpc/",
 	"title": "Create VPC",
 	"tags": [],
 	"description": "",
 	"content": "Create VPC Lab VPC Go to VPC service management console Click Your VPC. Click Create VPC. At the Create VPC page. Click on VPC and more In the Name tag field, enter DE. In the IPv4 CIDR field, enter: 10.10.0.0/16. Scroll down, we will keep the remaining default settings (2 AZs, 2 public subnets and 2 private subnets), because RDS forces us to have at least 2 AZs and 2 subnets. Then click Create VPC. "
 },
 {
-	"uri": "//localhost:1313/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/",
 	"title": "Data Pipeline Management",
 	"tags": [],
 	"description": "",
 	"content": "Create a Data Pipeline to backup and analyze daily data Overall In this lab, you\u0026rsquo;ll learn the basical pipeline when you want to collect and analyze the data of a website daily.\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
 },
 {
-	"uri": "//localhost:1313/1-introduce/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/1-introduce/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
 	"content": "Nowadays, data is very important for companies or industries to know the recent trends or customer demands. Storing, managing these data is mandatory for some people like Business Analytics or Data Scientists to analyze and mine.\nIn this lab, we will create a data pipeline to collect daily data from a website, process to clean data, and store these clean data to analyze. This pipeline is automated so that we don\u0026rsquo;t need to do this everyday, but AWS will automacally do for us.\n"
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.1-createec2/",
 	"title": "Preparing VPC, EC2 and RDS",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will need to create a VPC with 2 public / private subnets. Then create 1 EC2 Instance Linux located in the public subnet, 1 RDS Instance MySQL located in the private subnet. And we need to connect the Linux instance to the RDS MySQL instance.\nThe architecture overview after you complete this step will be as follows:\nContent Create VPC with public and private subnets Create security group Create public Linux server Create private RDS instance "
 },
 {
-	"uri": "//localhost:1313/3-deploy/3.1-set-up-mysql-instance/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/3-deploy/3.1-set-up-mysql-instance/",
 	"title": "Set up MySQL instance",
 	"tags": [],
 	"description": "",
 	"content": "Since the RDS instance is private, we must connect to EC2 instance to connect to it.\nGo to EC2 service management console. Click on Instances. Choose Linux instance we created. Click Connect to connect to this instance. Choose Connect using EC2 Instance Connect, then click Connect. Now we should see a terminal for this Linux instance. Enter sudo apt update to check for new updates. Enter sudo apt install mysql-server to install MySQL. Access to MySQL by typing sudo mysql. But we are going to use the database inside RDS instance we created. Go to RDS console Navigate to Databases and select our de-mysql-instance. You can see your database endpoint here. Now you can exit then try to log in by new password created. The command to login is mysql -h your_endpoint -u admin -p then type your password.\nNow we can implement our database in this MySQL instance. This is our database diagram: It\u0026rsquo;s easy to see the Transactions table stores the transaction list of the customers. Sender and receiver must be in the Customers table.\nNow type the SQL queries. These are stored in the file having name de_db.sql we\u0026rsquo;ve downloaded. After that, we should receive the result like this.\nNow exit MySQL.\n"
 },
 {
-	"uri": "//localhost:1313/4-datastorage/4.1-updateiamrole/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/4-datastorage/4.1-updateiamrole/",
 	"title": "Update IAM Role",
 	"tags": [],
 	"description": "",
 	"content": "For our Lambda function to be able to access data in RDS instance and send to S3 bucket, we will need to update the IAM Role assigned to lambda function by adding a policy that allows access to RDS and S3.\nSince our Lambda function is inside a private VPC, we will need attach a policy allowing our lambda function to access to EC2 instance too.\nUpdate IAM Role Go to IAM service management console Click Roles. Click Create role. Click AWS Service, then choose Lambda service. After that click Next. In the Search box Enter S3, then tick AmazonS3FullAccess. Enter RDS, then tick AmazonRDSDataFullAccess. Enter EC2, then tick AmazonEC2FullAccess. Then click Next. Now, enter the role name of this lambda function is rds-to-S3. We will see there are 3 policies in this IAM role, and click Create Role. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket to store data.\n"
 },
 {
-	"uri": "//localhost:1313/5-dataprocess/5.1-updateiamrole/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/5-dataprocess/5.1-updateiamrole/",
 	"title": "Update IAM Role",
 	"tags": [],
 	"description": "",
 	"content": "For our Glue job to be able to read data in S3 bucket and send this data to the S3 bucket, we will need to update the IAM Role assigned to the Glue job by adding a policy that allows access to S3.\nUpdate IAM Role Go to IAM service management console Click Roles. Click Create role. Click AWS Service, then choose Glue service. After that click Next. In the Search box Enter S3, then tick AmazonS3FullAccess. Then click Next. Now, enter the role name of this lambda function is glue-access-s3. We will see there is only 1 policy in this IAM role, and click Create Role. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket folder to store clean data.\n"
 },
 {
-	"uri": "//localhost:1313/6-datacrawler/6.1-createcrawler/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/6-datacrawler/6.1-createcrawler/",
 	"title": "Create Crawler",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will create a crawler job.\nAccess Glue console Click Databases. Then click Add database. Enter transactions in the Name, then click Create database. Now navigate to Crawlers, then click Create crawler. Enter crawl-transaction-data to name, then click Next. We need to assign a data source. Click on Add a data source. In Data source, choose S3. In S3 path, click Browse S3, then navigate to clean_data folder path. Tick Crawler new sub-folders only. Click Add an S3 data source. Then click Next. We also need an IAM role. Click Create new IAM role: It will show a new role wih name AWSGlueServiceRole-. Enter anything in the suffix to create this role. Then click Next. Choose your Target database is transactions you\u0026rsquo;ve created. Then click Next. Click Create crawler to finish creating crawler.\nNow we can run our created Crawler.\nClick Run crawler to start. A new crawler run will appear. Wait a few minutes until it completes. You can navigate to Databases in Glue Catalog to see our data is moved to Transactions database. "
 },
 {
-	"uri": "//localhost:1313/4-datastorage/4.2-creates3bucket/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/4-datastorage/4.2-creates3bucket/",
 	"title": "Create S3 Bucket",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will create an S3 bucket to store data from RDS instance.\nCreate S3 Bucket Access S3 service management console Click Create bucket. At the Create bucket page. In the Bucket name field, enter the bucket name de-bucket. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. Now, click on your new created bucket. Then click Create folder. Enter your folder name raw-data. Then click Create folder. "
 },
 {
-	"uri": "//localhost:1313/5-dataprocess/5.2-creates3bucket/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/5-dataprocess/5.2-creates3bucket/",
 	"title": "Create S3 Bucket",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will create an folder in our S3 bucket to store clean data from Glue job.\nAccess S3 console Click on de-bucket we\u0026rsquo;ve created. Click Create folder: Enter folder name: clean_data. Then click Create folder. "
 },
 {
-	"uri": "//localhost:1313/3-deploy/3.2-deploy-in-ec2-instance/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/3-deploy/3.2-deploy-in-ec2-instance/",
 	"title": "Deploy a website in EC2 instance",
 	"tags": [],
 	"description": "",
 	"content": "We\u0026rsquo;ve prepared our database. Now it\u0026rsquo;s time to deploy the website.\nChange directory to our utils folder by entering cd AWS-Workshop-1.\nIn app.js file, change your DB_HOST and DB_PASSWORD to the endpoint and the password you created.\nNow download the library.\nEnter sudo apt install npm to download npm library for Javascript. Init your nodejs environment with npm init -y. Download library for our website: npm install express mysql. Run node app.js. We can access to our website by access your_public_IP_linux_instance:3000 in your browser.\nNow access URL your_public_IP_linux_instance:3000/createcustomer\nTry to create some new customers to our website. Notice that phone numbers are unique.\nContinually access URL your_public_IP_linux_instance:3000/createtransaction Try to create some new transactions. Sender_id and receiver_id must be less or equal to the number of customers.\n"
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.2-downloadutils/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.2-downloadutils/",
 	"title": "Download utils",
 	"tags": [],
 	"description": "",
 	"content": "Download utils In this step, we will download all files we need for this workshop.\nGo to EC2 service management console Navigate to Instances. Click on our created Linux instance. Click Connect to connect to this EC2 instance. Click Connect. Now you can access EC2 instance through terminal. Enter sudo apt update to check for new updates. Type git clone https://github.com/flashhhhh/AWS-Workshop-1.git Enter cd AWS-Workshop-1 to change directory to this repo. Now, type git checkout utils. This is the branch containing all of the files we need. You can type ls to check. "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/",
 	"title": "Preparation ",
 	"tags": [],
 	"description": "",
 	"content": "\rYou need to create 1 Linux instance on the public subnet and 1 RDS MySQL instance on the private subnet to perform this lab.\nWe will store the website data to the RDS instance and make a daily schedule data pipeline to process and analyze our data.\nContent Prepare VPC, EC2 and RDS Download utils "
 },
 {
-	"uri": "//localhost:1313/4-datastorage/4.3-createlambdafunction/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/4-datastorage/4.3-createlambdafunction/",
 	"title": "Create Lambda function",
 	"tags": [],
 	"description": "",
 	"content": " Go to Lambda console Click Create a function. In the Create function: Select Author from scratch. In function name, enter rds-to-s3. Choose Runtime is Python 3.12. Scroll down to Permissions: Select Use an existing role among 3 options. Enter rds-to-s3 to Existing role. Click Advanced settings: Tick Enable VPC, since we want this lambda function in private subnet with our RDS instance. Select de-vpc we created. In the Subnets, select 2 private subnets. In the Security groups, select our de-lambda-function-SG. Now we can click Create function. Now we want to upload Lambda layer for more library. In the Lambda function console, click Upload from. Then click .zip file. Upload pymysql.zip (the file in utils), then click Save. Create a new file inside rds-to-s3 folder which has name lambda-function.py, then copy code from lambda-function.py from utils to this. And click Deploy to save. Click Test to create a new test event. Enter Event name de-test-event. Click Save. Click Test again. We can see our lambda function will run successfully. Now go to S3 console Click on our de-bucket. Click on folder raw_data. We can see there are 2 csv files in this folder. "
 },
 {
-	"uri": "//localhost:1313/3-deploy/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/3-deploy/",
 	"title": "Deploy a website",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will deploy a website to our EC2 server, located in the public subnets, and connecting to our RDS MySQL instance.\nContent 3.1. Set up MySQL instance 3.2. Deploy a website in EC2 instance\n"
 },
 {
-	"uri": "//localhost:1313/4-datastorage/4.4-createeventbridge/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/4-datastorage/4.4-createeventbridge/",
 	"title": "Create EventBridge Scheduler",
 	"tags": [],
 	"description": "",
 	"content": "Create a daily scheduler to automatically trigger Lambda function. Access Amazon EventBridge. Click Schedules, then click Create schedule. In the Define rule detail: Enter event name daily-trigger. Enter description Daily triggerring a Lambda event. In Schedule pattern: In Occurence, select Recurring schedule. In Schedule type, select Rate-based schedule. Enter our rate is 24 hours, it means our job will be triggered in a period of 24 hours. Choose Off in flexible time window. Scroll down then click Next.\nIn Select target: Select Templated targets, then click AWS Lambda Invoke Choosing Lambda function is rds-to-s3, then click Next. Choose NONE for Action after scheduler completion, since we need to do daily. Turn off Retry and DLQ. We will let AWS create an IAM role for us. Then scroll down and click Next.\nReview your scheduler then click on Create schedule.\nNow your rds-to-s3 Lambda function will run automatically 24 hours per time, meaning data in RDS instance will be copied to S3 bucket raw_data in a period of 24 hours.\n"
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.2-createsecgroup/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.1-createec2/2.1.2-createsecgroup/",
 	"title": "Create security groups",
 	"tags": [],
 	"description": "",
 	"content": "Create security groups In this step, we will proceed to create the security groups used for our instances. As you can see, these security groups will not need to open traditional ports to ssh like port 22 or remote desktop through port 3389.\nCreate security group for Linux instance located in public subnet Go to VPC service management console Click Security Group. Click Create security group. In the Security group name field, enter de-ec2-instance-SG. In the Description section, enter Security Group for ec2 public instance. In the VPC section, click the X to reselect the DE VPC you created for this lab. In the Inbound rules, click Add rule. Set Type to SSH, and set Source to 0.0.0.0/0. Set other inbound rules like this (Custom TCP with port 3000 because our website will run in port 3000) With Outbound rule, we don\u0026rsquo;t need to change anything. Then click Create security group. Create a security group for an RDS instance located in private subnets After successfully creating a security group for the Linux instance located in the public subnet, click the Security Groups link to return to the Security groups list. Click Create security group.\nIn the Security group name field, enter de-rds-instance-SG.\nIn the Description section, enter Security Group for RDS MySQL instance. In the VPC section, click the X to reselect the DE VPC you created for this lab. Scroll down, then click Create security group. Create a security group for a Lambda function in private subnets Go to VPC service management console, then click Create security group.\nEnter de-lambda-function-SG in Security group name, then Security Group for Lambda function in Description.\nSince Lambda function doesn\u0026rsquo;t need Inbound rules, we can scroll down and Create security group. "
 },
 {
-	"uri": "//localhost:1313/4-datastorage/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/4-datastorage/",
 	"title": "Move data from RDS to S3",
 	"tags": [],
 	"description": "",
 	"content": "We can manually create a snapshot of our RDS instance, then move it to S3 bucket. But when we need to do it daily, we must automate it by a Lambda function and schedule using CloudWatch.\nContent: Update IAM Role Create S3 Bucket Create Lambda function Create EventBridge Event "
 },
 {
-	"uri": "//localhost:1313/5-dataprocess/5.3-createetljob/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/5-dataprocess/5.3-createetljob/",
 	"title": "Create ETL job",
 	"tags": [],
 	"description": "",
 	"content": "\nCreate Visual ETL job to process data Go to Glue console Click ETL jobs. Then click Visual ETL to launch a new ETL job. Choose Amazon S3 as source data. An Amazon S3 rectangle will appear, click to this. In Data source properties: Enter Customers as a name. Click Browse S3, then navigate to customers.csv in raw_data folder. Click Infer schema to load properties of this data. Do similarly to the Transaction data source. Now we have all data sources. Let\u0026rsquo;s turn to transform data: Click Join in the list of Transform. Then click to the figure of Join in the right. Link Transactions and Customers to the Join transformation. Enter the name: Sender join. Click Add condition. Then select the condition join is Transactions.sender_id = Customers.id. Create another Join. Link Sender join and Customers to this Join. Click to this Join. In name, enter Receiver join. Click Add condition. Then select the condition join is Sender join.receiver_id = Customers.id. Now, we should delete some unnecessary fields. Choose Drop Fields among the list of Transforms. Link Receiver join to Drop fields. Click on this Drop fields. Delete these fields that we don\u0026rsquo;t need. We want to rename some fields too.\nScroll down in Transform list to find Rename Field. Link Drop fields to Rename fields, then click on Rename Fields. . Rename name to sender_name. Do similarly to rename 3 other fields:\nphone_number to sender_phone_number. .name to receiver_name. .phone_number to receiver_phone_number. Now add data destination:\nIn the Targets list, select Amazon S3. Link the last Rename field to this S3. Click on this S3. Enter Data Destination to the name. Click Browse S3. Navigate to clean_data folder. This is the folder we store our clean data. We have completed our visual ETL job. It will look like this image. Now click on Job detail.\nNow in Job details. Enter DE ETL job for name. Enter ETL job to clean data from raw_data to clean_data for Description. Select glue-access-s3 IAM role. We will have job type Spark with Language Python 3. Choose worker type G 1X, minimal for our demand. Enter number of workers from 2 to 10. I will choose 2 which is minimal. Since we don\u0026rsquo;t need incremental loading, Disable Job Bookmark. Keep default for others. Click Save to save our job. After ETL job is created, click Run to test our job. Now go to S3 bucket. We can see in clean_data folder there are some new files added (Because we choose Snappy Parquet compression) "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.3-createec2linux/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.1-createec2/2.1.3-createec2linux/",
 	"title": "Create public EC2 instance",
 	"tags": [],
 	"description": "",
 	"content": " Go to EC2 service management console Click Instances. Click Launch instances. Enter instance name de-linux-instance. Choose your OS Ubuntu On the Amazon Machine Image (AMI), select Ubuntu Server 24.04 LTS which has Free tier. On the Step 2: Choose an Instance Type page. Select your Architecture 64-bit (x86). Click on Instance type t2.micro. In the Key pair, click Create new key pair. Enter key pair name kp-linux. Keep the default setting, then click Create key pair. You will receive a file installed. Now on Network settings, click Edit to edit VPC and Security Group. Choose DE-VPC we have created. Choose DE-subnet-public-1 in Subnet. Enable in Auto-assign public IP. Click Select existing security group, then choose de-ec2-instance-SG we have created. Finally, click Launch instance. "
 },
 {
-	"uri": "//localhost:1313/5-dataprocess/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/5-dataprocess/",
 	"title": "Data Processing with Amazon Glue",
 	"tags": [],
 	"description": "",
 	"content": "\rThe data we receive in RDS instance is just raw data. To analyze this data, we must process to clean this data through ETL.\nWe will set up an ETL job using AWS Glue to process the data in S3 Bucket folder raw_data, and store clean data in another folder.\nContent Update IAM Role Create S3 Bucket Create ETL job "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createec2/2.1.4-createrdsmysql/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/2-prerequiste/2.1-createec2/2.1.4-createrdsmysql/",
 	"title": "Create private RDS Instance",
 	"tags": [],
 	"description": "",
 	"content": " Go to RDS service management console Click Databases. Click Create database. Click Standard create, then choose MySQL engine type. We will use Engine version MySQL 8.0.35 We can use Free tier template if we have a free tier AWS account. Change your instance settings. Enter your instance name de-mysql-instance. Set the Master username admin. Select Self managed management. Change your Master password and confirm it. In the Connectivity settings: We want to connect this RDS Instance to the public EC2 instance, so that click Connect to an EC2 compute resource. Choose de-linux-instance we\u0026rsquo;ve created in the EC2 instance. Now we should create our subnet group. Open Subnet group in a new tab. Click on Create DB subnet group. Enter the name de-mysql-instance-subnet-group, and the description Subnet group for mysql instance. Choose DE-vpc. On Availability Zones, choose your 2 AZs on your created VPC. On Subnets, choose 2 private subnets in your VPC. Then we click Create. After creating Subnet group successfully, click Choose existing DB subnet group, and choose what your\u0026rsquo;ve created. And on VPC security group, choose de-rds-instance-SG. Scroll down and click Create Database. It takes a few minutes for our database instance to be created. "
 },
 {
-	"uri": "//localhost:1313/6-datacrawler/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/6-datacrawler/",
 	"title": "Data Crawling with Glue Crawler",
 	"tags": [],
 	"description": "",
 	"content": "\rNow we want to analyze the clean data. To do it we want to crawl data from S3 to Glue Data Catalog, so that we can query this data by Athena.\nWe will set up a Glue Crawler to crawl the data in S3 Bucket folder clean_data, and store this data in Glue Data Catalog.\nContent Create Glue crawler "
 },
 {
-	"uri": "//localhost:1313/7-querydata/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/7-querydata/",
 	"title": "Query data with Athena",
 	"tags": [],
 	"description": "",
 	"content": "We will use Athena to make some analytics to our data in Glue Data Catalog.\nAccess Athena. Choose your Data source is AWSDataCatalog, and Database is transactions. Type some queries you want, such as: SELECT * FROM clean_data, then click Run. You will receive the result for your query.\nTry to make as many queries as you want to analyze and mine this data. "
 },
 {
-	"uri": "//localhost:1313/8-cleanup/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/8-cleanup/",
 	"title": "Clean up resources",
 	"tags": [],
 	"description": "",
 	"content": "We will take the following steps to delete the resources we created in this exercise.\nDelete Crawler Go to AWS Glue Click Crawlers. Tick the crawler we created, click Action then choose Delete crawler. Navigate to Databases. Tick the transactions database, then click Delete. Delete Glue ETL Navigate to ETL Jobs. Tick DE ETL job, then click Actions, choose Delete job(s). Delete Lambda function Go to Lambda\nTick our function, then click Actions, choose Delete.\nGo to EventBridge\nNavigate to Schedules. Choose our daily-trigger function, then click Delete. Delete RDS instance. Go to RDS\nNavigate to Databases, tick de-mysql-instance, then click Actions, choose Delete.\nTick like this image, then click Delete.\nNavigate to Subnet groups. Tick de-mysql-instance-subnet-group, then click Delete. Delete EC2 Instance Go to EC2 service management console\nClick Instances. Select our instance, click Instance state, then click Terminate (delete) instance. Delete VPC Go to VPC console\nClick Your VPCs. Select de-vpc, click Actions, then Delete VPC.\nDelete IAM roles Go to IAM\nNavigate to Roles. Delete these roles we created.\n"
 },
 {
-	"uri": "//localhost:1313/categories/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "//localhost:1313/tags/",
+	"uri": "http://localhost:39793/AWS-Workshop-1/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
