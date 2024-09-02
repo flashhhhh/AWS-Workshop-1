@@ -14,11 +14,11 @@ For our Glue job to be able to read data in S3 bucket and send this data to the 
   + Click **Roles**.
   + Click **Create role**.
 
-![IAM](/images/5.dataprocess/01-create_glue_role.png)
+![IAM](images/5.dataprocess/01-create_glue_role.png)
 
 2. Click **AWS Service**, then choose **Glue** service. After that click **Next**.
  
-![IAM](/images/5.dataprocess/02-choose_glue.png)
+![IAM](images/5.dataprocess/02-choose_glue.png)
 
 3. In the Search box
   + Enter **S3**, then tick **AmazonS3FullAccess**.
@@ -26,7 +26,7 @@ For our Glue job to be able to read data in S3 bucket and send this data to the 
 
 4. Now, enter the role name of this lambda function is **glue-access-s3**. We will see there is only 1 policy in this IAM role, and click **Create Role**.
 
-![IAM](/images/5.dataprocess/03-create_role.png)
+![IAM](images/5.dataprocess/03-create_role.png)
  
 {{%notice tip%}}
 In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy **AmazonS3FullAccess** for convenience.

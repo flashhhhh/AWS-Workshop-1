@@ -12,7 +12,7 @@ Now we want to analyze the clean data. To do it we want to crawl data from **S3*
    
 We will set up a **Glue Crawler** to crawl the data in S3 Bucket folder **clean_data**, and store this data in **Glue Data Catalog**.
 
-![Glue](/images/arc-005.png) 
+![Glue](images/arc-005.png) 
 
 #### Content
 

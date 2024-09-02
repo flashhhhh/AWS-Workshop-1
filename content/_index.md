@@ -9,7 +9,7 @@ chapter : false
 ### Overall
  In this lab, you'll learn the basical pipeline when you want to collect and analyze the data of a website daily.
 
-![ConnectPrivate](/images/arc-main.png) 
+![ConnectPrivate](images/arc-main.png) 
 
 ### Content
  1. [Introduction ](1-introduce/)
