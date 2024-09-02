@@ -7,7 +7,7 @@ pre : " <b> 4. </b> "
 ---
 
 
-We can manually create a snapshot of our RDS instance, then move it to S3 bucket. But when we need to do it daily, we must automate it by a Lambda function and schedule using CloudWatch.
+We can manually create a snapshot of our RDS instance, then move it to S3 bucket. But when we need to do it daily, we must automate it by a Lambda function and schedule using EventBridge Scheduler.
 
 ![Backup](../images/arc-002.png)
 
