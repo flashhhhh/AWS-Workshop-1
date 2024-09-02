@@ -10,7 +10,7 @@ In this step, we will need to create a VPC with 2 public / private subnets. Then
 
 The architecture overview after you complete this step will be as follows:
 
-![VPC](images/arc-001.png)
+![VPC](../images/arc-001.png)
 
 ### Content
   - [Create VPC with public and private subnets](2.1.1-createvpc/)

@@ -12,7 +12,7 @@ The data we receive in RDS instance is just raw data. To analyze this data, we m
    
 We will set up an ETL job using **AWS Glue** to process the data in S3 Bucket folder **raw_data**, and store clean data in another folder.
 
-![Glue](images/arc-003.png) 
+![Glue](../images/arc-003.png) 
 
 #### Content
 

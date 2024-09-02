@@ -14,17 +14,17 @@ We will take the following steps to delete the resources we created in this exer
    + Click **Crawlers**.
    + Tick the crawler we created, click **Action** then choose **Delete crawler**.
 
-![Crawler](images/8.clean/01-delete_crawler.png)
+![Crawler](../images/8.clean/01-delete_crawler.png)
 
 2. Navigate to **Databases**. Tick the **transactions** database, then click **Delete**.
 
-![Database](images/8.clean/02-delete_db.png)
+![Database](../images/8.clean/02-delete_db.png)
 
 #### Delete Glue ETL
 
 1. Navigate to **ETL Jobs**. Tick **DE ETL job**, then click **Actions**, choose **Delete job(s)**.
 
-![GlueETL](images/8.clean/03-delete_etl_job.png)
+![GlueETL](../images/8.clean/03-delete_etl_job.png)
 
 #### Delete Lambda function
 
@@ -44,7 +44,7 @@ We will take the following steps to delete the resources we created in this exer
 
 3. Tick like this image, then click **Delete**.
 
-![RDS](images/8.clean/04-delete_rds.png)
+![RDS](../images/8.clean/04-delete_rds.png)
 
 4. Navigate to **Subnet groups**. Tick **de-mysql-instance-subnet-group**, then click **Delete**.
 
@@ -54,7 +54,7 @@ Go to [EC2 service management console](https://console.aws.amazon.com/ec2/v2/hom
    + Click **Instances**.
    + Select our instance, click **Instance state**, then click **Terminate (delete) instance**.
 
-![EC2](images/8.clean/05-delete_ec2_instance.png)
+![EC2](../images/8.clean/05-delete_ec2_instance.png)
 
 #### Delete VPC
 
@@ -68,4 +68,4 @@ Go to [EC2 service management console](https://console.aws.amazon.com/ec2/v2/hom
 
 2. Navigate to **Roles**. Delete these roles we created.
 
-![IAM](images/8.clean/06-delete_iam.png)
+![IAM](../images/8.clean/06-delete_iam.png)
