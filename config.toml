@@ -1,4 +1,5 @@
 # Change the default theme to be use when building the site with Hugo
+baseUrl = 'https://flashhhhh.github.io/AWS-Workshop-1/'
 theme = "hugo-theme-learn"
 
 # For search functionality
